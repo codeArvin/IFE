@@ -1,0 +1,60 @@
+body {
+  padding: 20px;
+}
+
+img {
+  width: 80px;
+  height: 80px;
+}
+
+img:nth-last-child {
+  margin-bottom: none;
+  border: 2px red solid;
+}
+
+.container {
+  background-color: #eee;
+  padding: 20px;
+  border: 1px #999 solid;
+  /*防止内部元素过大溢出父元素外面*/
+  overflow: auto;
+}
+
+.left, .center, .right {
+  box-sizing: border-box;
+  background-color: white;
+  border: 1px #999 solid;
+  padding: 20px;
+}
+
+.left {
+  width: 200px;
+  float:left;
+}
+
+.left img {
+  margin-right: 5px;
+}
+
+.left span {
+  display: inline-block;
+  vertical-align: top;
+}
+
+/* 为什么html里要先写left和right，最后再写center？？？？？ */
+.center {
+  margin: 0 160px 0 240px;
+}
+
+.right {
+  width: 120px;
+  float: right;
+}
+
+.right img {
+  margin-bottom: 20px;
+}
+
+.right img:last-child {
+  margin-bottom: 0;
+}
