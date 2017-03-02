@@ -1,5 +1,5 @@
 /* -- main start -- */
-body {
+body, html {
   background-color: rgb(179, 191, 185);
   margin: 0;
 }
@@ -72,15 +72,13 @@ nav li a {
 
 .image {
   font-size: 10px;
-  margin-left: 50px;
-  margin-bottom: 10px;
   padding: 7px;
+  margin: 10px 20px;
   width: 100px;
-  height: 100%;
   border: 1px gray solid;
 }
 
-.image p {
+.image figcaption {
   text-indent: 0;
   text-align: center;
   margin: 0 0 7px 0;

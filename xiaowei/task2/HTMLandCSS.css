@@ -65,7 +65,7 @@ nav li a {
   border: 1px gray solid;
 }
 
-.image p {
+.image figcaption {
   text-indent: 0;
   text-align: center;
   margin: 0 0 7px 0;
