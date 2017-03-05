@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    li {
+      list-style: none;
+      margin: 10px 10px;
+    }
+
+    ul {
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+    }
+
+    div {
+      height: 50px;
+      background-color: red;
+      line-height: 50px;
+      text-align: center;
+      border-radius: 5px;
+      padding: 0 10px;
+      color: whitesmoke;
+      font-size: 24px;
+      cursor: pointer;
+    }
+  </style>
+  <title>Queue</title>
+</head>
+<body>
+  <input id="input" type="text" placeholder="请输入一个数字">
+  <button id="lInsert">左侧入</button>
+  <button id="rInsert">右侧入</button>
+  <button id="lOut">左侧出</button>
+  <button id="rOut">右侧出</button>
+  <!-- !!!! 这里要注意li标签互相要贴合在一起，不能有回车，否则ul的第一个和最后一个子元素就不是li而是空字符串了 !!!!!!! -->
+  <ul id="ul"><li>
+      <div>10</div>
+    </li><li>
+      <div>3</div>
+    </li><li>
+      <div>7</div>
+    </li><li>
+      <div>12</div>
+    </li><li>
+      <div>11</div>
+    </li><li>
+      <div>30</div>
+    </li></ul>
+</body>
+<script>
+  var addHandle = function(target) {
+    target.addEventListener('click', function() {
+      var action = {
+        type: 'count',
+        number: target.innerText,
+        target: target
+      }
+      func(action);
+    })
+  };
+
+  var func = function(action) {
+    var ul = document.getElementById('ul');
+    if (action.number) {
+      var li = document.createElement('LI');
+      var temp = '<div>' + action.number + '</div>';
+      li.innerHTML = temp;
+      addHandle(li);
+    }
+    switch (action.type) {
+      case 'count':
+        ul.removeChild(action.target);
+        setTimeout(function() {
+          alert('你删除了数字' + action.number);
+        }, 200);
+        console.log('count');
+        break;
+      case 'lInsert':
+        var first = ul.firstChild;
+        ul.insertBefore(li, ul.firstChild);
+        console.log('lInsert');
+        break;
+      case 'rInsert':
+        ul.appendChild(li);
+        console.log('rInsert');
+        break;
+      case 'lOut':
+        if (!ul.hasChildNodes()) {
+          setTimeout(function() {
+            alert('no number exist below');
+          }, 200);
+          return;
+        }
+        var text = ul.firstChild.innerText;
+        ul.removeChild(ul.firstChild);
+        setTimeout(function() {
+          alert('你删除了数字' + text);
+        }, 200);
+        console.log('lOut');
+        break;
+      case 'rOut':
+        if (!ul.hasChildNodes()) {
+          setTimeout(function() {
+            alert('no number exist below');
+          }, 200);
+          return;
+        }
+        var text = ul.lastChild.innerText;
+        ul.removeChild(ul.lastChild);
+        setTimeout(function() {
+          alert('你删除了数字' + text);
+        }, 200);
+        console.log('rOut');
+        break;
+      default:
+        break;
+    }
+  }
+
+  var lInsertBtn = document.getElementById('lInsert'),
+      rInsertBtn = document.getElementById('rInsert'),
+      lOutBtn = document.getElementById('lOut'),
+      rOutBtn = document.getElementById('rOut'),
+      li = document.getElementById('ul').getElementsByTagName('li');
+
+  for (var i = 0; i < li.length; i++) {
+    addHandle(li[i]);
+  }
+
+  lInsertBtn.addEventListener('click', function() {
+    var input = document.getElementById('input');
+    var number = input.value;
+    input.value = '';
+    if (isNaN(number) || number === '') {
+      alert('Please input a number');
+      return;
+    }
+    var action = {
+      type: 'lInsert',
+      number: number
+    }
+    func(action);
+  });
+
+  rOutBtn.addEventListener('click', function() {
+    var action = {
+      type: 'rOut',
+      number: false
+    }
+    func(action);
+  });
+
+  rInsertBtn.addEventListener('click', function() {
+    var input = document.getElementById('input');
+    var number = input.value;
+    input.value = '';
+    if (isNaN(number)  || number === '') {
+      alert('Please input a number');
+      return;
+    }
+    var action = {
+      type: 'rInsert',
+      number: number
+    }
+    func(action);
+  });
+
+  lOutBtn.addEventListener('click', function() {
+    var action = {
+      type: 'lOut',
+      number: false
+    }
+    func(action);
+  });
+</script>
+</html>
