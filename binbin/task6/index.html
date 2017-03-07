@@ -211,7 +211,8 @@
       alert('请输入有效值');
       return;
     }
-    var regex = new RegExp(match);
+    // 第二个参数是字符串，即'i'，不是i
+    var regex = new RegExp(match, 'i');
     var matchArr = [];
     console.log(regex);
     search.value = '';
