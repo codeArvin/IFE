@@ -1,0 +1,18 @@
+
+ul {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+li {
+  width: 30px;
+  list-style: none;
+  margin: 10px 1px;
+  background-color: red;
+  color: whitesmoke;
+  font-size: 10px;
+  text-align: center;
+  cursor: pointer;
+}
