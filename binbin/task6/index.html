@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    ul {
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+    }
+
+    li {
+      list-style: none;
+      margin: 10px 10px;
+      height: 50px;
+      background-color: red;
+      line-height: 50px;
+      text-align: center;
+      border-radius: 5px;
+      padding: 0 10px;
+      color: whitesmoke;
+      font-size: 24px;
+      cursor: pointer;
+    }
+  </style>
+  <title>Queue</title>
+</head>
+<body>
+    <textarea id="input" placeholder="接收空白字符，逗号(全角半角)，顿号等作为分隔符"
+      rows="5" cols="50"
+    ></textarea>
+    <button id="lInsert">左侧入</button>
+    <button id="rInsert">右侧入</button>
+    <button id="lOut">左侧出</button>
+    <button id="rOut">右侧出</button>
+    <input id="search" type="text" placeholder="请输入查询内容" />
+    <button id="searchBtn">查询</button>
+  <!-- !!!! 这里要注意li标签互相要贴合在一起，不能有回车，否则ul的第一个和最后一个子元素就不是li而是空字符串了 !!!!!!! -->
+  <ul id="ul"><li>
+    10
+    </li><li>
+    3
+    </li><li>
+    7
+    </li><li>
+    12
+    </li><li>
+    11
+    </li><li>
+    30
+    </li></ul>
+</body>
+<script>
+  var addHandle = function(target) {
+    target.addEventListener('click', function() {
+      var action = {
+        type: 'count',
+        text: target.innerText,
+        target: target
+      }
+      func(action);
+    })
+  };
+
+  var func = function(action) {
+    var ul = document.getElementById('ul');
+    if (action.text) {
+      var li = document.createElement('LI');
+      li.innerHTML = action.text;
+      addHandle(li);
+    }
+    switch (action.type) {
+      case 'count':
+        ul.removeChild(action.target);
+        setTimeout(function() {
+          alert('你删除了：' + action.text);
+        }, 200);
+        console.log('count');
+        break;
+      case 'lInsert':
+        var first = ul.firstChild;
+        ul.insertBefore(li, ul.firstChild);
+        console.log('lInsert');
+        break;
+      case 'rInsert':
+        ul.appendChild(li);
+        console.log('rInsert');
+        break;
+      case 'lOut':
+        if (!ul.hasChildNodes()) {
+          setTimeout(function() {
+            alert('no element exist below');
+          }, 200);
+          return;
+        }
+        var text = ul.firstChild.innerText;
+        ul.removeChild(ul.firstChild);
+        setTimeout(function() {
+          alert('你删除了：' + text);
+        }, 200);
+        console.log('lOut');
+        break;
+      case 'rOut':
+        if (!ul.hasChildNodes()) {
+          setTimeout(function() {
+            alert('no element exist below');
+          }, 200);
+          return;
+        }
+        var text = ul.lastChild.innerText;
+        ul.removeChild(ul.lastChild);
+        setTimeout(function() {
+          alert('你删除了：' + text);
+        }, 200);
+        console.log('rOut');
+        break;
+      default:
+        break;
+    }
+  }
+
+  var lInsertBtn = document.getElementById('lInsert'),
+      rInsertBtn = document.getElementById('rInsert'),
+      lOutBtn = document.getElementById('lOut'),
+      rOutBtn = document.getElementById('rOut'),
+      search = document.getElementById('searchBtn');
+      li = document.getElementById('ul').getElementsByTagName('li');
+
+  for (var i = 0; i < li.length; i++) {
+    addHandle(li[i]);
+  }
+
+  lInsertBtn.addEventListener('click', function() {
+    var input = document.getElementById('input');
+    var text = input.value;
+    if(text === '') {
+      alert('请输入有效值');
+      return;
+    }
+    input.value = '';
+    // 匹配空白字符，逗号（全角半角），顿号，空格
+    var regex = /[\s,，、]/;
+    var textArr = text.split(regex);
+    textArr = textArr.filter(function(text) {
+      if (text === '') {
+        return false;
+      }
+      return true;
+    });
+    textArr.map(function(text) {
+      var action = {
+        type: 'lInsert',
+        text: text
+      }
+      func(action);
+    });
+  });
+
+  rInsertBtn.addEventListener('click', function() {
+    var input = document.getElementById('input');
+    var text = input.value;
+    if(text === '') {
+      alert('请输入有效值');
+      return;
+    }
+    input.value = '';
+    // 匹配空白字符，逗号（全角半角），顿号，空格
+    var regex = /[\s,，、]/;
+    var textArr = text.split(regex);
+    textArr = textArr.filter(function(text) {
+      if (text === '') {
+        return false;
+      }
+      return true;
+    });
+    textArr.map(function(text) {
+      var action = {
+        type: 'rInsert',
+        text: text
+      }
+      func(action);
+    });
+  });
+
+  lOutBtn.addEventListener('click', function() {
+    var action = {
+      type: 'lOut',
+      number: false
+    }
+    func(action);
+  });
+
+  rOutBtn.addEventListener('click', function() {
+    var action = {
+      type: 'rOut',
+      number: false
+    }
+    func(action);
+  });
+
+  // 本来以为还要进行模糊匹配的编写，然而发现RegExp本来就是对字符串内指定值的匹配
+  // 主要是编写出来符合匹配规则的正则表达式，以前看过，不过好长时间没用忘得差不多了，重新看了一下才明白
+  // 目前有个问题就是考虑事情不是很全面，刚刚才发现搜索框不输入直接点击搜索会匹配全部，临时加上了一个if验证，
+  search.addEventListener('click', function() {
+    var li = document.getElementById('ul').getElementsByTagName('li');
+    var search = document.getElementById('search');
+    var match = search.value;
+    if (match === '') {
+      alert('请输入有效值');
+      return;
+    }
+    var regex = new RegExp(match);
+    var matchArr = [];
+    console.log(regex);
+    search.value = '';
+    for (var i = 0; i < li.length; i++) {
+      var text = li[i].innerHTML;
+      // 初始所有颜色值
+      li[i].style.backgroundColor = 'red';
+      if (regex.test(text)) {
+        matchArr.push(i);
+        li[i].style.backgroundColor = 'orange';
+      }
+    }
+    console.log('符合查询条件的索引:' + matchArr);
+    if (matchArr.length === 0) {
+      alert('no match!');
+      return;
+    }
+
+  });
+</script>
+</html>
