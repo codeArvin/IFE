@@ -1,5 +1,5 @@
 // 全局变量，当前所选中元素
-var select;
+var select = '';
 
 // 初始化多叉树
 var mt = new multiwayTree();
