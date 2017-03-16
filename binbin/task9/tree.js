@@ -145,6 +145,7 @@ var addBtn = document.getElementById('add'),
     deleteBtn = document.getElementById('delete'),
     body = document.body,
     panel = document.getElementById('panel');
+    
 // 在panel区域去除body的click事件
 panel.addEventListener('click', function(e) {
   e.stopPropagation();
