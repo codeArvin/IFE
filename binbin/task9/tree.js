@@ -152,9 +152,16 @@ panel.addEventListener('click', function(e) {
 
 // 当鼠标点击其他区域时，清空颜色，重置select
 body.addEventListener('click', function() {
-  clear();
-  select = '';
-  console.log('reset select');
+  // 最初是用clear来清空颜色，后来发现如果在遍历的时候点击其他位置会干扰遍历的颜色显示
+  // 所以改为判断当前是否有选中元素，有则清空，没有则不清空
+  // clear();
+  if (select !== '') {
+    clear();
+    select = '';
+    console.log('reset select');
+    return;
+  }
+  return;
 });
 
 addBtn.addEventListener('click', function() {
