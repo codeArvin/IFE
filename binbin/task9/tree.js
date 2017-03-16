@@ -39,6 +39,7 @@ var createDiv = function(key) {
   div.innerText = key;
   div.id = key;
   div.className = 'flex';
+
   // 绑定点击时间
   div.addEventListener('click', function(e) {
     e.stopPropagation();
@@ -62,6 +63,7 @@ var renderNode = function(node) {
 var render = function() {
   var root = mt.getRoot();
   var container = document.getElementById('container');
+  
   // 在重绘页面时候发现的问题，每次重绘前要清空页面
   // 清空页面
   while (container.hasChildNodes()) {
@@ -145,7 +147,7 @@ var addBtn = document.getElementById('add'),
     deleteBtn = document.getElementById('delete'),
     body = document.body,
     panel = document.getElementById('panel');
-    
+
 // 在panel区域去除body的click事件
 panel.addEventListener('click', function(e) {
   e.stopPropagation();
