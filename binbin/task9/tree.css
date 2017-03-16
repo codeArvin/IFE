@@ -1,0 +1,64 @@
+.flex {
+  display: flex;
+  justify-content: center;
+}
+
+#container div {
+  border: 1px black solid;
+  padding: 10px 5px;
+  margin: 10px 5px;
+  background-color: white;
+}
+
+#container {
+  /*flex width可以自适应？加上就就不会子元素溢出到外面了*/
+  display: flex;
+  border: none;
+  margin: 0 auto;
+}
+
+#traverse {
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  width: 200px;
+  height: 40px;
+  border: none;
+  background-color: rgb(237, 19, 18);
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px;
+  color: white;
+  font-size: 16px;
+  display: block;
+  outline: none;
+}
+
+#search {
+  margin: 10px
+}
+
+#search #button {
+  display: flex;
+  justify-content: center;
+}
+
+input {
+  display: block;
+  width: 400px;
+  height: 30px;
+  margin: 0 auto;
+  font-size: 16px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px rgb(247, 71, 47) solid;
+  text-align: center;
+}
+
+#panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

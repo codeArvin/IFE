@@ -6,6 +6,7 @@
 // 4- dfsTraverse(callback) 深度优先搜索,callback接收参数为node类型
 // 5- getRoot() 获得root节点
 // 6- delete(key) 删除id为key的节点及其子节点
+
 var multiwayTree = function() {
   var Node = function(key) {
     this.id = key;
@@ -98,6 +99,26 @@ var multiwayTree = function() {
   // getRoot
   this.getRoot = function() {
     return root;
+  }
+
+  // delete a node
+  var deleteNode = function(node, key) {
+    if (!node || !node.children.length) return;
+
+    var children = node.children;
+    for (var i = 0; i < children.length; i++) {
+      var child = children[i];
+      if (child.id === key) {
+        node.children.splice(i, 1);
+
+      } else {
+        deleteNode(child, key);
+      }
+    }
+  };
+
+  this.delete = function(id) {
+    deleteNode(root, id);
   }
 }
 
