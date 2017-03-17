@@ -13,7 +13,8 @@ var fail = function(input, show) {
 var text = {
   a: '必填：长度为4~16个字符',
   b: '每个英文字母、数字、英文符号长度为1',
-  c: '每个汉字、中文符号长度为2'
+  c: '每个汉字、中文符号长度为2',
+  d: '必填：长度为4~16个字符'
 };
 
 var check = {
@@ -105,10 +106,33 @@ var check = {
     } else {
       fail(input, show);
     }
+  },
+
+  d: function(input, show) {
+    var value = input.value;
+    if (value === '') {
+      fail(input, show);
+      return;
+    }
+    var arr = value.split('');
+    var regex = /[\u0391-\uFFE5]/;
+    var len = 0;
+    arr.map(function(str) {
+      if (regex.test(str)) {
+        len += 2;
+      } else {
+        len += 1;
+      }
+    });
+    if (len > 3 && len < 17) {
+      success(input, show);
+    } else {
+      fail(input, show);
+    }
   }
 };
 
-['a', 'b', 'c'].map(function(id) {
+['a', 'b', 'c', 'd'].map(function(id) {
   var input = document.getElementById(id);
   var show = document.getElementById(id + 'Show');
   var btn = document.getElementById(id + 'Btn');
@@ -133,6 +157,9 @@ var check = {
         break;
       case 'c':
         check.c(input, show);
+        break;
+      case 'd':
+        check.d(input, show);
         break;
     }
   });

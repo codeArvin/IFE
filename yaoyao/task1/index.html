@@ -8,6 +8,12 @@
   <title>form</title>
 </head>
 <body>
+    <div id="desc">
+      提交完才发现对题目理解有误,我把需求当成三个了，而且把长度理解成字符个数了，都写完就不改了，
+      我把我实现的规则解释一下: <br>1、输入字符个数在4~16就可以<br />2、每个连续的英文字母、数字、英文符号个数只能为一
+      其他字符如何不管<br>3、每个连续的汉字、中文符号个数只能为二，其他字符如何不管<br>
+      作业放在最下面了。说实话我也很绝望啊。。。。
+    </div>
     <div id="container">
       <div class="panel">
         <span>名称</span>
@@ -26,6 +32,14 @@
         <input type="text" id="c">
         <button id="cBtn">验证</button>
         <div id="cShow">每个汉字、中文符号长度为2</div>
+      </div>
+      <hr />
+      <span style="color: red; font-weight:900">作业在这里</span>
+      <div class="panel work">
+        <span>名称</span>
+        <input type="text" id="d">
+        <button id="dBtn">验证</button>
+        <div id="dShow">必填，长度为4~16个字符</div>
       </div>
     </div>
 </body>

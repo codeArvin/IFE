@@ -1,8 +1,15 @@
+#desc {
+  color: red;
+  width:600px;
+  margin: 20px auto;
+}
+
 #container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 
 .panel {
   margin: 10px;
@@ -45,4 +52,11 @@ button:active {
   left: 60px;
   margin-top: 10px;
   color: gray;
+}
+
+
+/* home work*/
+hr {
+  border: 1px red solid;
+  width: 100%;
 }
