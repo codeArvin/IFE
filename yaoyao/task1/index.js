@@ -34,8 +34,9 @@ var check = {
         regex3 = /[\u0391-\uFFE5a-zA-Z0-9]+/,
         regex4 = /[\u0391-\uFFE5]+/;
     var value = input.value;
+    var isEnglishOK, isNumberOK, isSymbolOK;
     // 没有输入，或输入只含有中文字符，格式错误
-    var arr = value.split(regex4).filter(function(str) {return str !== ''});
+    var arr = value.split(regex4).filter(function(str) {return (str !== '');});
     var isOnlyChinese = arr.length === 0;
     if (value === '' || isOnlyChinese) {
       fail(input, show);
@@ -44,21 +45,21 @@ var check = {
     // 英文字母检验
     var english = value.match(regex1);
     if (english) {
-      var isEnglishOK = english.every(function(str) {return str.length === 1});
+      isEnglishOK = english.every(function(str) {return str.length === 1;});
     } else {
-      var isEnglishOK = true;
+      isEnglishOK = true;
     }
     // 数字检验
     var number = value.match(regex2);
     if (number) {
-      var isNumberOK = number.every(function(str) {return str.length === 1});
+      isNumberOK = number.every(function(str) {return str.length === 1;});
     } else {
-      var isNumberOK = true;
+      isNumberOK = true;
     }
     // 英文字符检验，把除了英文字母，数字，全角字符的都看做英文字符
     var symbol = value.split(regex3);
-    symbol = symbol.filter(function(str) {return str !== ''});
-    var isSymbolOK = symbol.every(function(str) {return str.length === 1});
+    symbol = symbol.filter(function(str) {return str !== '';});
+    isSymbolOK = symbol.every(function(str) {return str.length === 1;});
 
     // 整体检验
     if (isEnglishOK && isNumberOK && isSymbolOK) {
@@ -99,8 +100,8 @@ var check = {
       return true;
     });
     var chinese = value.match(regex3);
-    var isChineseOK = chinese.every(function(str) { return str.length === 2});
-    var isSymbolOK = symbol.every(function(str) {return str.length === 2});
+    var isChineseOK = chinese.every(function(str) { return str.length === 2;});
+    var isSymbolOK = symbol.every(function(str) {return str.length === 2;});
     if (isChineseOK && isSymbolOK) {
       success(input, show);
     } else {
@@ -148,19 +149,6 @@ var check = {
   });
 
   btn.addEventListener('click', function() {
-    switch (id) {
-      case 'a':
-        check.a(input, show);
-        break;
-      case 'b':
-        check.b(input, show);
-        break;
-      case 'c':
-        check.c(input, show);
-        break;
-      case 'd':
-        check.d(input, show);
-        break;
-    }
+    check[id](input, show);
   });
 });
