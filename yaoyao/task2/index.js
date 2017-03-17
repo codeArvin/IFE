@@ -163,7 +163,7 @@ var check = {
 // 提交全局校验
 var submit = document.getElementById('submit');
 submit.addEventListener('click', function() {
-  var isOK;
+  var isOK = true;
   ['a', 'b', 'c', 'd', 'e'].map(function(id) {
     var input = document.getElementById(id);
     var show = document.getElementById(id + 'Show');
