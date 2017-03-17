@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./index.css">
+  <title>form</title>
+</head>
+<body>
+    <div id="container">
+      <div class="panel">
+        <span>名称</span>
+        <input type="text" id="a">
+        <button id="aBtn">验证</button>
+        <div id="aShow">必填：长度为4~16个字符</div>
+      </div>
+      <div class="panel">
+        <span>名称</span>
+        <input type="text" id="b">
+        <button id="bBtn">验证</button>
+        <div class="textSuccess" id="bShow">每个英文字母、数字、英文符号长度为1</div>
+      </div>
+      <div class="panel">
+        <span>名称</span>
+        <input type="text" id="c">
+        <button id="cBtn">验证</button>
+        <div id="cShow">每个汉字、中文符号长度为2</div>
+      </div>
+    </div>
+</body>
+<script src="./index.js"></script>
+</html>
