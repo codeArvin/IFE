@@ -83,29 +83,30 @@ var rotate = function(direction) {
 var move = function() {
   var top = square.style.top,
       left = square.style.left;
+  // 最开始读取不到值就这样设置了，后来才明白style和css不是一样的
   top = top === '' ? 1 : parseInt(top);
   left = left === '' ? 1 : parseInt(left);
   switch (headDirection) {
     case 'top':
       top = top - 52;
-      if (top < 0 || top > 468) return;
+      if (top < 0 || top > 470) return;
       square.style.top = top + 'px';
       break;
     case 'right':
       left = left + 52;
-      if (left < 0 || left > 468) return;
+      if (left < 0 || left > 470) return;
       square.style.left = left + 'px';
       // console.log(left);
       // console.log(square.style.left);
       break;
     case 'bottom':
       top = top + 52;
-      if (top < 0 || top > 468) return;
+      if (top < 0 || top > 470) return;
       square.style.top = top + 'px';
       break;
     case 'left':
       left = left - 52;
-      if (left < 0 || left > 468) return;
+      if (left < 0 || left > 470) return;
       square.style.left = left + 'px';
       break;
   }
