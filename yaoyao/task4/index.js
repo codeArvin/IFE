@@ -1,6 +1,7 @@
 // 不知道为什么，这个任务用了好长时间
 
 var headDirection = 'top';
+var deg = 0;
 var square = document.getElementById('square');
 
 var squareRotate = function(deg) {
@@ -79,6 +80,25 @@ var rotate = function(direction) {
   }
 };
 
+// 自己好笨。。。如果改成rotate2需要对headDirection判断的方式也进行修改，就不做了，这个任务做的好混乱，程序也写的好混乱
+var rotate2 = function(direction) {
+  switch (direction) {
+    case 'tLeft':
+      deg -= 90;
+      square.style.transform = 'rotate(' + deg + 'deg)';
+      break;
+    case 'tRight':
+      deg += 90;
+      square.style.transform = 'rotate(' + deg + 'deg)';
+      break;
+    case 'tBack':
+      deg += 180;
+      square.style.transform = 'rotate(' + deg + 'deg)';
+      break;
+  }
+  console.log(deg);
+}
+
 // 最初采用的是translate,但后来发现实现不了
 var move = function() {
   var top = square.style.top,
@@ -86,6 +106,8 @@ var move = function() {
   // 最开始读取不到值就这样设置了，后来才明白style和css不是一样的
   top = top === '' ? 1 : parseInt(top);
   left = left === '' ? 1 : parseInt(left);
+  console.log(top);
+  console.log(left);
   switch (headDirection) {
     case 'top':
       top = top - 52;
@@ -96,8 +118,6 @@ var move = function() {
       left = left + 52;
       if (left < 0 || left > 470) return;
       square.style.left = left + 'px';
-      // console.log(left);
-      // console.log(square.style.left);
       break;
     case 'bottom':
       top = top + 52;
