@@ -26,7 +26,7 @@ var insertInput = function() {
   input.type = 'text';
   show.appendChild(span);
   show.appendChild(input);
-}
+};
 
 var createOption = function(key) {
   var option = document.createElement('OPTION');
@@ -65,8 +65,8 @@ var insertSelect = function() {
 
     var school = city['北京'];
     for (var i = 0; i < school.length; i++) {
-      var option = createOption(school[i]);
-      schoolSelect.add(option);
+      option1 = createOption(school[i]);
+      schoolSelect.add(option1);
     }
 
     // 为citySelect绑定change事件
