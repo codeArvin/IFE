@@ -1,0 +1,20 @@
+#long {
+  height: 1000px;
+  width: 100px;
+  margin: 0 auto;
+}
+
+#show {
+  display: block;
+  width: 200px;
+  height: 40px;
+  margin: 0 auto;
+  background-color: rgb(68, 185, 157);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  font-size: 16px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}

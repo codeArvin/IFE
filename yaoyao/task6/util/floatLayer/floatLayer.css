@@ -1,0 +1,69 @@
+/* -- floatLayer start -- */
+#box {
+  display: none;
+}
+#box #layer {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.62);
+  z-index: 100;
+}
+
+#box #floatLayer {
+  width: 400px;
+  height: 200px;
+  position: absolute;
+  /*居中*/
+  top: calc(50% - 100px);
+  left: calc(50% - 200px);
+  background-color: white;
+  z-index: 1000;
+  /* outline顺序 颜色 轮廓类型 宽度 */
+  /*outline: rgba(5, 5, 5, 0.69) solid 10000px;*/
+
+  /* -- 禁止选取文字 -- */
+  -moz-user-select: none; /*火狐*/
+  -webkit-user-select: none; /*webkit浏览器*/
+  -ms-user-select: none; /*IE10*/
+  -khtml-user-select: none; /*早期浏览器*/
+  user-select: none;
+}
+
+#box #floatLayer #head {
+  height: 40px;
+  border-bottom: 1px gray solid;
+  line-height: 40px;
+  padding-left: 10px;
+}
+
+#box #floatLayer #head:active {
+  cursor: all-scroll;
+}
+
+#box #floatLayer .body {
+  box-sizing: border-box;
+  height: calc(100% - 80px);
+  padding: 10px;
+}
+
+#box #floatLayer .buttons {
+  height: 40px;
+  text-align: right;
+  padding-right: 10px;
+}
+
+#box #floatLayer .buttons button {
+  width: 80px;
+  height: 35px;
+  background-color: rgb(68, 185, 157);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  font-size: 16px;
+  margin-left: 10px;
+}
+/* -- floatLayer end -- */
