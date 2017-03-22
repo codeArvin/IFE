@@ -1,0 +1,137 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#container {
+  display: flex;
+  /*充满整个屏幕*/
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+#image {
+  width: 500px;
+  border-radius: 5px;
+  transition: filter 2s ease;
+}
+
+#img:hover>#image {
+  -webkit-filter: blur(4px);
+  filter: blur(4px);
+}
+
+#img {
+  position: relative;
+}
+
+#img:hover {
+  cursor: pointer;
+}
+
+#tb, #lr, #text {
+  box-sizing: border-box;
+  position: absolute;
+  width: 400px;
+  height: 250px;
+  top: 50%;
+  left: 50%;
+  margin-left: -200px;
+  margin-top: -125px;
+}
+
+#text {
+  opacity: 0;
+  text-align: center;
+  color: transparent;
+  padding-top: 40px;
+  background: -webkit-linear-gradient(left, #147B96, #E6D205 25%, #147B96 50%, #E6D205 75%, #147B96);
+  background: -o-linear-gradient(left, #147B96, #E6D205 25%, #147B96 50%, #E6D205 75%, #147B96);
+  background: -moz-linear-gradient(left, #147B96, #E6D205 25%, #147B96 50%, #E6D205 75%, #147B96);
+  background: linear-gradient(left, #147B96, #E6D205 25%, #147B96 50%, #E6D205 75%, #147B96);
+  -webkit-background-clip: text;
+  -ms-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  background-size: 200% 100%;
+  font-size: 24px;
+  font-weight: bolder;
+  transition: all 2s ease;
+  animation: textGradual 2s infinite linear;
+}
+
+#tb {
+  border-top: 5px lightgray solid;
+  border-bottom: 5px lightgray solid;
+  transform: rotateY(90deg);
+  transition: transform 2s ease;
+}
+
+#lr {
+  border-left: 3px lightgray solid;
+  border-right: 3px lightgray solid;
+  transform: rotateX(90deg);
+  transition: transform 2s ease;
+}
+
+#img:hover #tb {
+  transform: rotateY(0deg);
+}
+
+#img:hover #lr {
+  transform: rotateX(0deg);
+}
+
+#img:hover #text {
+  padding-top: 80px;
+  opacity: 1;
+}
+
+@keyframes textGradual {
+  from {background-position: 0 0}
+  to {background-position: -100% 0}
+}
+
+/*#img:hover>#text {
+  text-align: center;
+  padding-top: 80px;
+  background: -webkit-linear-gradient(left, #147B96, #E6D205 25%, #147B96 50%, #E6D205 75%, #147B96);
+  background: -o-linear-gradient(left, #147B96, #E6D205 25%, #147B96 50%, #E6D205 75%, #147B96);
+  background: -moz-linear-gradient(left, #147B96, #E6D205 25%, #147B96 50%, #E6D205 75%, #147B96);
+  background: linear-gradient(left, #147B96, #E6D205 25%, #147B96 50%, #E6D205 75%, #147B96);
+  -webkit-background-clip: text;
+  -ms-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  background-size: 200% 100%;
+  font-size: 24px;
+  font-weight: bolder;
+  animation: textGradual 5s infinite linear;
+}
+
+#img:hover>#tb {
+  animation: tbGradual 5s;
+  border-top: 5px lightgray solid;
+  border-bottom: 5px lightgray solid;
+}
+
+#img:hover>#lr{
+  animation: lrGradual 5s;
+  border-left: 5px lightgray solid;
+  border-right: 5px lightgray solid;
+}
+
+@keyframes tbGradual {
+  from {transform: rotateY(90deg)}
+  to {transform: rotateY(0deg)}
+}
+
+@keyframes lrGradual {
+  from {transform: rotateX(90deg)}
+  to {transform: rotateX(0deg)}
+}*/
