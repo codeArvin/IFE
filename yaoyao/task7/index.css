@@ -1,0 +1,31 @@
+#sortTable {
+  /* 设置边框合并 */
+  border-collapse: collapse;
+}
+
+#sortTable th, tr, td {
+  border: 1px gray solid;
+  width: 100px;
+  height: 30px;
+  text-align: center;
+}
+
+#sortTable th {
+  background-color: rgb(13, 53, 60);
+  color: white;
+  height: 30px;
+}
+
+.sort:hover {
+  cursor: pointer;
+}
+
+.sort::after {
+  content: '';
+  border-top: 5px white solid;
+  border-left: 5px transparent solid;
+  border-right: 5px transparent solid;
+  position: relative;
+  top: 15px;
+  left: 15px;
+}
