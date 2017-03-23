@@ -1,0 +1,57 @@
+input[type="radio"] {
+  display: none;
+}
+
+#root {
+  margin: 50px auto;
+}
+
+.container {
+  width: 500px;
+  margin: 0 auto;
+  margin-bottom: 5px;
+  border: 1px gray solid;
+  border-radius: 5px;
+  box-shadow: 0 0 8px lightgray;
+}
+
+label {
+  display: block;
+  text-align: center;
+  background-color: whitesmoke;
+  padding: 5px 0;
+  border-radius: 5px;
+  user-select: none;
+}
+
+label:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.label-2 {
+  display: none;
+}
+
+.radio ~ div {
+  visibility: hidden;
+  height: 0;
+  overflow: hidden;
+  padding: 0 10px;
+  transition: all 0.5s;
+}
+
+.radio:checked ~ .label-2 {
+  display: block;
+  text-decoration: underline;
+}
+
+.radio:checked ~ .label-1 {
+  display: none;
+}
+
+.radio:checked ~ div {
+  visibility: visible;
+  padding: 5px 10px;
+  height: 240px;
+}
