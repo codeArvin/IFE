@@ -1,0 +1,41 @@
+#root {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding-top: 100px;
+}
+
+.container {
+  width: 600px;
+  margin: 10px auto;
+}
+
+.container span {
+  display: inline-block;
+  width: 220px;
+  text-align: right;
+  padding-right: 5px;
+}
+
+input {
+  width: 200px;
+  height: 30px;
+  border: 1px lightgray solid;
+  border-radius: 5px;
+  outline: none;
+  padding-left: 5px;
+  font-size: 14px;
+}
+
+button {
+  width: 60px;
+  height: 30px;
+  border: none;
+  background-color: rgb(254, 99, 44);
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  outline: none;
+}
